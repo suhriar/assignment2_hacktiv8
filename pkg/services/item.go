@@ -20,14 +20,14 @@ func NewItemService(repo repositories.ItemRepo) *ItemService {
 
 var createdItems []params.ItemResponse
 
-func (i *ItemService) CreateItem(responseOrder params.Response, request params.CreateOder) *helper.Response {
+func (i *ItemService) CreateItem(responseOrder params.Response, request params.CreateOder) *params.Response {
 	createdItems = nil
 
 	orderData := responseOrder.Payload
 	order, err := orderData.(*models.Order)
 
 	if !err {
-		return &helper.Response{
+		return &params.Response{
 			Status:         400,
 			Error:          "BAD REQUEST",
 		}
@@ -46,7 +46,7 @@ func (i *ItemService) CreateItem(responseOrder params.Response, request params.C
 		itemData, err := i.itemRepo.CreateItem(&itemModel)
 
 		if err != nil {
-			return &helper.Response{
+			return &params.Response{
 				Status:         400,
 				Error:          "BAD REQUEST",
 			}

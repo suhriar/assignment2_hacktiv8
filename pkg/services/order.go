@@ -70,6 +70,7 @@ func (o *OrderService) GetOrderByIDWithItems(orderId int) *params.Response {
 
 }
 
+
 func (o *OrderService) GetAllOrdersWithItems() *params.Response {
 	response, err := o.orderRepo.GetAllOrdersWithItems()
 

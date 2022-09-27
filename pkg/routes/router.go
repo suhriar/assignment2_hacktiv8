@@ -17,7 +17,6 @@ func NewRouter(router *gin.Engine, orderController *controllers.OrderController)
 
 func (r *routers) Start(port string) {
 	r.router.POST("/order", r.orderController.CreateNewOrder)
-
-	// r.router.GET("/orders", r.orderController.GetOrders)
+	r.router.GET("/orders", r.orderController.GetAllOrdersWithItems)
 	r.router.Run(port)
 }
